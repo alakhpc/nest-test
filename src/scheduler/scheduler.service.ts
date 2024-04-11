@@ -14,7 +14,7 @@ export class SchedulerService implements OnModuleInit {
     const discovered = await this.discovery.providerMethodsWithMetaAtKey<SchedulerMeta>(SCHEDULER_TOKEN);
 
     for (const { discoveredMethod, meta } of discovered) {
-      setInterval(() => discoveredMethod.handler.call(discoveredMethod.parentClass), meta.ms);
+      setInterval(() => discoveredMethod.handler(), meta.ms);
     }
   }
 }
